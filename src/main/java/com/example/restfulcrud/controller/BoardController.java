@@ -2,6 +2,7 @@ package com.example.restfulcrud.controller;
 
 import com.example.restfulcrud.dto.DTO;
 import com.example.restfulcrud.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,23 +10,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/board")
-
 public class BoardController {
 
-    // CRUD
-    // C -> CREATE(write)
-    // R -> READ(read)
-    // U -> UPDATE(
-    // D -> DELETE
-    //
-    //
-    //
 
-    private BoardService boardService;
+    private final BoardService boardService;
 
+    @Autowired
+    public BoardController(BoardService boardService) {
+        this.boardService = boardService;
+    }
 
-    @PostMapping("/write")
-    public DTO write(DTO board){
+    @PostMapping("")
+    public DTO write(@RequestBody DTO board){
         return boardService.write(board);
     }
 
@@ -34,8 +30,8 @@ public class BoardController {
         return boardService.list();
     }
 
-    @DeleteMapping("/delete")
-    public void delete(String boardId){
+    @DeleteMapping("/delete/{boardId}")
+    public void delete(@PathVariable String boardId){
         boardService.delete(boardId);
     }
 

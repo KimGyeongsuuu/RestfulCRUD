@@ -31,13 +31,6 @@ public class BoardRepository {
     public List<DTO> list(){
         return board;
     }
-    // id를 쓰고 타이틀과 내용보기
-    public DTO getId(String boardId){
-        return board.stream()
-                .filter(DTO -> DTO.getBoardId().equals(boardId))
-                .findAny()
-                .orElse(new DTO("","",""));
-    }
     public void delete(String boardId){
         board.removeIf(DTO -> DTO.getBoardId().equals(boardId));
     }
