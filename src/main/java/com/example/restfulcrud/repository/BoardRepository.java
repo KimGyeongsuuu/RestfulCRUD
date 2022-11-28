@@ -2,9 +2,7 @@ package com.example.restfulcrud.repository;
 
 
 import com.example.restfulcrud.dto.DTO;
-import com.example.restfulcrud.repository.BoardRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +29,16 @@ public class BoardRepository {
     public List<DTO> list(){
         return board;
     }
+
+    // 아이디를 받고 해당 글을 삭제
     public void delete(String boardId){
         board.removeIf(DTO -> DTO.getBoardId().equals(boardId));
+    }
+
+    public DTO readById(String boardId){
+        return board.stream()
+                .filter(DTO -> DTO.getBoardId().equals(boardId))
+                .findAny()
+                .orElse(new DTO("","",""));
     }
 }

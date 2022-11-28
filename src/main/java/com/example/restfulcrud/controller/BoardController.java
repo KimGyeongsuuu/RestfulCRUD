@@ -20,7 +20,7 @@ public class BoardController {
         this.boardService = boardService;
     }
 
-    @PostMapping("")
+    @PostMapping
     public DTO write(@RequestBody DTO board){
         return boardService.write(board);
     }
@@ -33,6 +33,11 @@ public class BoardController {
     @DeleteMapping("/delete/{boardId}")
     public void delete(@PathVariable String boardId){
         boardService.delete(boardId);
+    }
+
+    @GetMapping("/{boardId}")
+    public DTO readById(@PathVariable String boardId){
+        return boardService.readById(boardId);
     }
 
 }

@@ -27,5 +27,9 @@ public class BoardService {
         boardRepository.delete(boardId);
     }
 
+    public DTO readById(String boardId){
+        return boardRepository.readById(boardId);
+    }
+
 
 }
