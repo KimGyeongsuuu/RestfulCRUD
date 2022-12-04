@@ -1,15 +1,24 @@
 package com.example.restfulcrud.dto;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import com.example.restfulcrud.Entity.Board;
+import lombok.*;
 
-@Getter
-@Setter
+import javax.validation.constraints.NotEmpty;
+
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class DTO {
-    private String boardId;
+    @NotEmpty
     private String title;
+    @NotEmpty
     private String content;
+
+    public Board toEntity(){
+        return Board.builder()
+                .title(title)
+                .content(content)
+                .build();
+    }
 }
