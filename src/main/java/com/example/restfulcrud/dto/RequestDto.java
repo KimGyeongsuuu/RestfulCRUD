@@ -12,12 +12,15 @@ import javax.validation.constraints.NotEmpty;
 public class RequestDto {
 
     @NotEmpty
+    private Integer boardId;
+    @NotEmpty
     private String title;
     @NotEmpty
     private String content;
 
     public Board toEntity(){
         return Board.builder()
+                .boardId(boardId)
                 .title(title)
                 .content(content)
                 .build();

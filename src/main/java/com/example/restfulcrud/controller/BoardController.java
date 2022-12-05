@@ -12,7 +12,6 @@ import java.util.Optional;
 
 
 @RestController
-@Slf4j
 @RequestMapping("/board")
 @RequiredArgsConstructor
 public class BoardController {
