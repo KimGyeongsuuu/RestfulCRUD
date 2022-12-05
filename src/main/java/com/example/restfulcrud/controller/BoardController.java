@@ -38,6 +38,11 @@ public class BoardController {
         boardService.delete();
     }
 
+    @PatchMapping("update/{boardId}")
+    public void update(@PathVariable Integer boardId, @RequestBody RequestDto requestDto){
+        boardService.update(boardId,requestDto);
+    }
+
 
 
 }

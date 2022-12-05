@@ -24,11 +24,16 @@ public class BoardService {
     public Optional<Board> findById(Integer boardId){
         return boardRepository.findById(boardId);
     }
-
     public void deleteById(Integer boardId){
         boardRepository.deleteById(boardId);
     }
     public void delete(){
         boardRepository.deleteAll();
+    }
+    public void update(Integer boardId, RequestDto requestDto){
+        Optional<Board> updateBoard = boardRepository.findById(boardId);
+        updateBoard.get().updateTitle(requestDto.getTitle());
+        updateBoard.get().updateContent(requestDto.getContent());
+        boardRepository.save(updateBoard.get());
     }
 }
