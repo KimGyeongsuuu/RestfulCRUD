@@ -1,8 +1,8 @@
 package com.example.restfulcrud.repository;
 
 
-import com.example.restfulcrud.Entity.Board;
+import com.example.restfulcrud.entity.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BoardRepository extends JpaRepository<Board, String> {
+public interface BoardRepository extends JpaRepository<Board, Integer> {
 }
